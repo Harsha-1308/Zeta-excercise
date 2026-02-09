@@ -18,7 +18,14 @@ public class BankingApp {
         ExecutorService executor = Executors.newFixedThreadPool(3);
         while(true){
             System.out.println("Enter the bank account number");
-            int accountNumber = S.nextInt();
+            int accountNumber;
+            try {accountNumber = S.nextInt();}
+            catch (Exception e){
+                System.out.println("Alphabets are not allowed");
+                S.next();
+                continue;
+            }
+
             if (bankList.containsKey(accountNumber)){
                 account=bankList.get(accountNumber);
                 break;
@@ -28,7 +35,13 @@ public class BankingApp {
             }
             else{
                 System.out.println("Account Number is not existing. Want to create a new account? type 1");
-                int newacc = S.nextInt();
+                int newacc;
+                try{newacc = S.nextInt();}
+                catch (Exception e){
+                    System.out.println("Alphabets are not allowed");
+                    S.next();
+                    continue;
+                }
                 if (newacc ==1 ){
                     System.out.println("Enter initial bank balance: $");
                     int initialbalance=S.nextInt();
