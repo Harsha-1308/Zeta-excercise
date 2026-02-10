@@ -24,6 +24,9 @@ public class SavingsAccount extends Account {
         return super.getBalance();
 
     }
+    public String toString(){
+        return "Account: "+this.getNumber()+" Balance: "+this.getBalance();
+    }
 
 
     @Override
