@@ -12,9 +12,7 @@ public class DepositTask implements Callable {
     }
     @Override
     public Object call() {
-        if (amount<=0){
-            throw new EntryAmountException();
-        }
+
         String thread=Thread.currentThread().getName();
         System.out.println(thread+"depositing $"+ amount);
         account.deposit(amount);

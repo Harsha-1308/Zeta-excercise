@@ -1,10 +1,7 @@
 package BankExecutor;
 
 import java.lang.reflect.AccessibleObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -36,7 +33,8 @@ public class BankingApp {
                 break;
             }
             else if(accountNumber<0){
-                throw new EntryAmountException();
+                    System.out.println("Negative numbers are not allowed");
+
             }
             else{
                 System.out.println("Account Number is not existing. Want to create a new account? type 1");
@@ -53,8 +51,19 @@ public class BankingApp {
                     if(initialbalance<0){
                         throw new EntryAmountException();
                     }
-                    account= new BankAccount(110,initialbalance);
-                    bankList.put(110,account);
+                    Random rand=new Random();
+                    int randomNum;
+                    while(true){
+                         randomNum= rand.nextInt(1000);
+                        if(!bankList.containsKey(randomNum)){
+                            break;
+                        }
+
+                    }
+                    account= new BankAccount(randomNum,initialbalance);
+                    bankList.put(randomNum,account);
+                    System.out.println("Your new Account created");
+                    account.getDetails();;
                     break;
                 }
 
@@ -74,6 +83,7 @@ public class BankingApp {
             System.out.println(" 7. Give bank details");
             System.out.println(" 8. Make a Transaction");
             System.out.println(" 9. Show Transaction History");
+            System.out.println(" 10. Log Out");
             System.out.println(" Enter your  choice");
             int choice;
             try {choice = S.nextInt();}
@@ -89,11 +99,27 @@ public class BankingApp {
                 case 2:
                     System.out.print("Enter amount to deposit :$ ");
                     int dep = S.nextInt();
+                    try {
+                        if (dep<=0){
+                            throw new EntryAmountException();
+                        }
+                    } catch (EntryAmountException e) {
+                        System.out.println(" Error: " + e.getMessage());
+                        break;
+                    }
                     executor.submit(new DepositTask(account, dep));
                     break;
                 case 3:
                     System.out.println("Enter the amount to withdraw :$ ");
                     int wd = S.nextInt();
+                    try {
+                        if (wd<=0){
+                            throw new EntryAmountException();
+                        }
+                    } catch (EntryAmountException e) {
+                        System.out.println(" Error: " + e.getMessage());
+                        break;
+                    }
                     executor.submit(new WithdrawTask(account, wd));
                     break;
                 case 4:
@@ -104,9 +130,40 @@ public class BankingApp {
                 case 5:
                     System.out.println(" Simulating parallel withdraw and deposit of $ ");
                     System.out.println("Enter the amount to withdraw :$ ");
-                    int wd1 = S.nextInt();
+                    int wd1;
+                    while (true) {
+                        wd1= S.nextInt();
+                        try {
+                            if (wd1<=0){
+                                throw new EntryAmountException();
+                            }
+                            else{
+                                break;
+                            }
+                        } catch (EntryAmountException e) {
+                            System.out.println(" Error: " + e.getMessage());
+                            S.next();
+
+                        }
+                    }
+
                     System.out.print("Enter amount to deposit :$ ");
-                    int dep1 = S.nextInt();
+                    int dep1 ;
+                    while (true) {
+                        dep1= S.nextInt();
+                        try {
+                            if (dep1<=0){
+                                throw new EntryAmountException();
+                            }
+                            else{
+                                break;
+                            }
+                        } catch (EntryAmountException e) {
+                            System.out.println(" Error: " + e.getMessage());
+                            S.next();
+
+                        }
+                    }
                     executor.submit(new WithdrawTask(account, wd1));
                     executor.submit(new DepositTask(account, dep1));
                     break;
@@ -145,7 +202,7 @@ public class BankingApp {
                             account1 = bankList.get(accountNumber1);
                             break;
                         } else if (accountNumber1 < 0) {
-                            throw new EntryAmountException();
+                            System.out.println("Negative numbers are not allowed");
                         } else {
                             System.out.println("Account Number is not existing. Type existing account number");
 

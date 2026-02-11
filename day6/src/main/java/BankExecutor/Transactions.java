@@ -23,10 +23,14 @@ public class Transactions implements Runnable{
     }
     @Override
     public void run(){
-        if (amount<=0){
+        if(accNumber1==accNumber2){
+        System.out.println("Transaction cant happen for same account.");
+
+        }
+        else if (amount<=0){
             throw new EntryAmountException();
         }
-        if (account1.getBalance()>=amount){
+        else if (account1.getBalance()>=amount){
             System.out.println("crediting $"+ amount+" to "+accNumber2);
             WithdrawTask w1 = new WithdrawTask(account1,amount);
             DepositTask d1= new DepositTask(account2,amount);
