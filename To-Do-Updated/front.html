@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Advanced Task Manager</h2>
+
+    <input id="taskInput" type="text" placeholder="Enter task">
+    <input id="dueDate" type="date">
+    <button id="addBtn">Add Task</button>
+
+    <div style="margin-top:15px;">
+        <button onclick="setFilter('all')">All</button>
+        <button onclick="setFilter('completed')">Completed</button>
+        <button onclick="setFilter('pending')">Pending</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>

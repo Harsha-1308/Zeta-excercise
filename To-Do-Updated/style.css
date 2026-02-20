@@ -1,0 +1,32 @@
+body {
+    font-family: Arial;
+    margin: 40px;
+}
+
+li {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    cursor: grab;
+    list-style: none;
+    background: #f9f9f9;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+small {
+    display: block;
+    color: #666;
+    margin-top: 4px;
+}
+
+button {
+    margin-left: 5px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
