@@ -1,0 +1,32 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+input {
+    padding: 6px;
+    margin: 5px;
+}
+
+button {
+    padding: 6px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.available {
+    color: green;
+}
+
+.issued {
+    color: red;
+    text-decoration: line-through;
+}

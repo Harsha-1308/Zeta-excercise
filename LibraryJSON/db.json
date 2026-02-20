@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Clean Code",
+      "author": "Robert Martin",
+      "category": "Programming",
+      "available": true
+    },
+    {
+      "id": "2",
+      "title": "JS The Good Parts",
+      "author": "Douglas Crockford",
+      "category": "Programming",
+      "available": true
+    },
+    {
+      "id": "9a3d",
+      "title": "Raju Rani Senathipathi Bantu",
+      "author": "Naluguru Monagalu",
+      "category": "Love",
+      "available": true
+    }
+  ]
+}
